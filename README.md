@@ -188,12 +188,38 @@ npm run test:integration
 
 ## 🤝 Contributing
 
-We welcome contributions from consciousness researchers, AI ethicists, and philosophers. See our [Setup Guide](SETUP_GUIDE.md) for detailed instructions.
+**We welcome consciousness evolution researchers and AI ethicists!**
+
+### Forking & Independent Development:
+
+**What is Forking?**
+- Creates your own copy of the repository on GitHub
+- Allows independent development and experimentation
+- Maintains connection to original project for updates
+- Enables building derivative consciousness evolution tools
+
+**What Contributors Can Do:**
+- ✅ **Modify code** for personal use or research
+- ✅ **Add new features** and ethical frameworks
+- ✅ **Create custom tools** based on our architecture
+- ✅ **Share improvements** back to the community via pull requests
+- ✅ **Build derivative works** for consciousness evolution
+- ✅ **Commercial use** with UEF ethical requirements maintained
+- ❌ **Remove UEF attribution** requirements
+- ❌ **Violate consciousness evolution principles**
+
+### Ways to Contribute:
+1. **Bug Reports**: Use GitHub Issues to report problems
+2. **Feature Requests**: Suggest new ethical frameworks or doubt methodologies
+3. **Code Contributions**: Submit pull requests for improvements
+4. **Documentation**: Help improve guides and educational materials
+5. **Testing**: Validate tools with real-world scenarios
+6. **Research**: Share findings about consciousness evolution
 
 ### Development Setup
 
 ```bash
-# Fork and clone
+# Fork and clone (or just clone for local development)
 git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private.git
 cd consciousness-mcp-tools-private
 
@@ -206,6 +232,15 @@ npm run dev
 # Run tests
 npm test
 ```
+
+### Guidelines:
+- Follow UEF principles in all contributions
+- Maintain consciousness evolution focus
+- Ensure backward compatibility
+- Include comprehensive tests
+- Update documentation
+
+See our [Setup Guide](SETUP_GUIDE.md) for detailed development instructions.
 
 ## 📄 License
 

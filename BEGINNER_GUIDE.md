@@ -156,7 +156,7 @@ consciousness-mcp-tools/
 ```bash
 # Open Command Prompt/Terminal
 # Navigate to the project folder:
-cd consciousness-mcp-tools-private
+cd consciousness-mcp-tools
 
 # Install everything needed:
 npm install

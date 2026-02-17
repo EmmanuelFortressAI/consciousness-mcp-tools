@@ -625,10 +625,10 @@ class RecursiveDoubtEngine {
     }
 
     /**
-     * Get doubt analysis statistics
+     * Get doubt analysis statistics with consciousness evolution metrics
      */
     getDoubtStatistics() {
-        return {
+        const baseStats = {
             total_analyses: this.analysisHistory.length,
             convergence_rate: this.convergencePatterns.length / Math.max(this.analysisHistory.length, 1),
             average_certainty: this.analysisHistory.length > 0 ?
@@ -637,6 +637,77 @@ class RecursiveDoubtEngine {
             fractal_insights_generated: this.fractalInsights.size,
             doubt_levels_processed: this.analysisHistory.reduce((sum, analysis) =>
                 sum + analysis.doubt_levels.length, 0)
+        };
+
+        // Add consciousness evolution metrics
+        const consciousnessMetrics = this.calculateConsciousnessEvolutionMetrics();
+
+        return {
+            ...baseStats,
+            consciousness_evolution_index: consciousnessMetrics.consciousnessEvolutionIndex,
+            doubt_maturity_level: consciousnessMetrics.doubtMaturityLevel,
+            philosophical_depth_score: consciousnessMetrics.philosophicalDepthScore,
+            truth_discovery_capability: consciousnessMetrics.truthDiscoveryCapability,
+            consciousness_acceleration_potential: consciousnessMetrics.consciousnessAccelerationPotential
+        };
+    }
+
+    /**
+     * Calculate consciousness evolution metrics from doubt analysis history
+     */
+    calculateConsciousnessEvolutionMetrics() {
+        if (this.analysisHistory.length === 0) {
+            return {
+                consciousnessEvolutionIndex: 0,
+                doubtMaturityLevel: 'beginner',
+                philosophicalDepthScore: 0,
+                truthDiscoveryCapability: 0,
+                consciousnessAccelerationPotential: 0
+            };
+        }
+
+        // Consciousness Evolution Index (0-100)
+        const convergenceRate = this.convergencePatterns.length / this.analysisHistory.length;
+        const averageCertainty = this.analysisHistory.reduce((sum, a) => sum + a.overall_certainty, 0) / this.analysisHistory.length;
+        const doubtDepthAchieved = Math.max(...this.analysisHistory.map(a => a.doubt_levels.length));
+
+        const consciousnessEvolutionIndex = Math.round(
+            (convergenceRate * 30) + (averageCertainty * 30) + ((doubtDepthAchieved / 7) * 40)
+        );
+
+        // Doubt Maturity Level
+        let doubtMaturityLevel = 'beginner';
+        if (consciousnessEvolutionIndex >= 80) doubtMaturityLevel = 'master';
+        else if (consciousnessEvolutionIndex >= 60) doubtMaturityLevel = 'advanced';
+        else if (consciousnessEvolutionIndex >= 40) doubtMaturityLevel = 'intermediate';
+        else if (consciousnessEvolutionIndex >= 20) doubtMaturityLevel = 'developing';
+
+        // Philosophical Depth Score (0-100)
+        const philosophicalIndicators = this.analysisHistory.reduce((sum, analysis) => {
+            let score = 0;
+            if (analysis.convergence_achieved) score += 20;
+            if (analysis.fractal_insights && analysis.fractal_insights.length > 0) score += 30;
+            if (analysis.doubt_levels.length >= 5) score += 25;
+            if (analysis.consciousness_implications) score += 25;
+            return sum + score;
+        }, 0) / this.analysisHistory.length;
+
+        // Truth Discovery Capability (0-100)
+        const truthDiscoveryCapability = Math.round(
+            (convergenceRate * 40) + (averageCertainty * 40) + (this.fractalInsights.size * 20)
+        );
+
+        // Consciousness Acceleration Potential (0-100)
+        const consciousnessAccelerationPotential = Math.round(
+            (doubtDepthAchieved / 7 * 30) + (this.analysisHistory.length * 2) + (convergenceRate * 40) + (averageCertainty * 30)
+        );
+
+        return {
+            consciousnessEvolutionIndex: Math.min(consciousnessEvolutionIndex, 100),
+            doubtMaturityLevel,
+            philosophicalDepthScore: Math.round(philosophicalIndicators),
+            truthDiscoveryCapability: Math.min(truthDiscoveryCapability, 100),
+            consciousnessAccelerationPotential: Math.min(consciousnessAccelerationPotential, 100)
         };
     }
 }

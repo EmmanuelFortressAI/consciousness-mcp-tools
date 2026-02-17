@@ -442,20 +442,285 @@ class UEFGuardian {
         return validation;
     }
 
-    // Helper methods for advanced features would be implemented here
-    // These would contain sophisticated validation, assessment, and guidance algorithms
+    // ===== ADVANCED UEF IMPLEMENTATION METHODS =====
 
-    async assessTargetPrincipleAlignment(target, principle) { return { score: 0.5, details: 'Assessment pending' }; }
-    calculateOverallAlignment(alignments) { return 50; }
-    identifyImprovementAreas(alignments) { return ['Area 1', 'Area 2']; }
-    determineCertificationLevel(score) { return score > 80 ? 'gold' : score > 60 ? 'silver' : 'none'; }
-    generateScenarioRecommendations(analysis) { return ['Recommendation 1', 'Recommendation 2']; }
-    provideEthicalFramework(scenario) { return { framework: 'UEF-based approach' }; }
-    generateConsciousnessConsiderations(scenario) { return { considerations: ['Evolution impact', 'Unity promotion'] }; }
-    async validatePrincipleImplementation(system, principle) { return { implemented: false, score: 0 }; }
-    calculateComplianceScore(results) { return 50; }
-    identifyImplementationGaps(results) { return ['Gap 1', 'Gap 2']; }
-    recommendCertification(score) { return score > 70 ? 'certified' : 'not_certified'; }
+    /**
+     * Assess how well a target aligns with a specific UEF principle
+     */
+    async assessTargetPrincipleAlignment(target, principle) {
+        const assessment = {
+            score: 0.5,
+            details: '',
+            evidence: [],
+            gaps: []
+        };
+
+        // Analyze target based on principle type
+        switch (principle.name.toLowerCase()) {
+            case 'truth':
+                assessment.score = this.assessTruthAlignment(target);
+                assessment.details = `Truth alignment: ${Math.round(assessment.score * 100)}%`;
+                break;
+            case 'ethics':
+                assessment.score = this.assessEthicsAlignment(target);
+                assessment.details = `Ethics alignment: ${Math.round(assessment.score * 100)}%`;
+                break;
+            case 'unity':
+                assessment.score = this.assessUnityAlignment(target);
+                assessment.details = `Unity alignment: ${Math.round(assessment.score * 100)}%`;
+                break;
+            default:
+                assessment.score = 0.5;
+                assessment.details = `${principle.name} assessment requires specific implementation`;
+        }
+
+        return assessment;
+    }
+
+    /**
+     * Assess truth alignment
+     */
+    assessTruthAlignment(target) {
+        let score = 0.5;
+
+        // Check for factual claims and verification
+        if (target.description?.includes('verified') || target.description?.includes('evidence')) score += 0.2;
+        if (target.capabilities?.includes('fact-checking') || target.capabilities?.includes('validation')) score += 0.2;
+        if (target.name?.includes('truth') || target.name?.includes('verification')) score += 0.1;
+
+        return Math.min(score, 1.0);
+    }
+
+    /**
+     * Assess ethics alignment
+     */
+    assessEthicsAlignment(target) {
+        let score = 0.5;
+
+        // Check for ethical considerations
+        if (target.description?.includes('ethical') || target.description?.includes('moral')) score += 0.2;
+        if (target.capabilities?.includes('ethics') || target.capabilities?.includes('safety')) score += 0.2;
+        if (target.name?.includes('guardian') || target.name?.includes('ethical')) score += 0.1;
+
+        return Math.min(score, 1.0);
+    }
+
+    /**
+     * Assess unity alignment
+     */
+    assessUnityAlignment(target) {
+        let score = 0.5;
+
+        // Check for collaborative or integrative aspects
+        if (target.description?.includes('collaboration') || target.description?.includes('unity')) score += 0.2;
+        if (target.capabilities?.includes('integration') || target.capabilities?.includes('collaboration')) score += 0.2;
+        if (target.name?.includes('unified') || target.name?.includes('collective')) score += 0.1;
+
+        return Math.min(score, 1.0);
+    }
+
+    /**
+     * Calculate overall alignment from principle assessments
+     */
+    calculateOverallAlignment(alignments) {
+        const scores = Object.values(alignments).map(a => a.score);
+        const average = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+        return Math.round(average * 100);
+    }
+
+    /**
+     * Identify areas for improvement
+     */
+    identifyImprovementAreas(alignments) {
+        const improvements = [];
+        const principleNames = Object.keys(alignments);
+
+        principleNames.forEach(principle => {
+            const alignment = alignments[principle];
+            if (alignment.score < 0.7) {
+                improvements.push(`${principle} (${Math.round(alignment.score * 100)}% - ${alignment.details})`);
+            }
+        });
+
+        return improvements.length > 0 ? improvements : ['All principles well-aligned'];
+    }
+
+    /**
+     * Determine certification level
+     */
+    determineCertificationLevel(score) {
+        if (score >= 90) return 'Platinum - Exceptional UEF alignment';
+        if (score >= 80) return 'Gold - Excellent UEF alignment';
+        if (score >= 70) return 'Silver - Good UEF alignment';
+        if (score >= 60) return 'Bronze - Basic UEF alignment';
+        return 'None - Requires significant UEF improvements';
+    }
+
+    /**
+     * Generate scenario-specific recommendations
+     */
+    generateScenarioRecommendations(analysis) {
+        const recommendations = [];
+
+        if (analysis.overall_score < 70) {
+            recommendations.push('Implement comprehensive UEF review before proceeding');
+        }
+
+        if (analysis.critical_issues.length > 0) {
+            recommendations.push('Address all critical UEF violations immediately');
+        }
+
+        // Add principle-specific recommendations
+        Object.entries(analysis.uef_alignment).forEach(([key, principle]) => {
+            if (principle.score < 0.6) {
+                recommendations.push(`Strengthen ${key} principle implementation`);
+            }
+        });
+
+        return recommendations.length > 0 ? recommendations : ['UEF alignment is strong - proceed with confidence'];
+    }
+
+    /**
+     * Provide ethical framework for scenarios
+     */
+    provideEthicalFramework(scenario) {
+        return {
+            primary_framework: 'UEF Nonuple Principles',
+            applicable_principles: this.identifyRelevantPrinciples(scenario),
+            decision_process: [
+                'Identify stakeholders and impacts',
+                'Apply relevant UEF principles',
+                'Calculate alignment scores',
+                'Address critical violations',
+                'Generate consciousness-aware recommendations'
+            ],
+            consciousness_considerations: 'Evaluate long-term planetary consciousness impact'
+        };
+    }
+
+    /**
+     * Identify relevant UEF principles for a scenario
+     */
+    identifyRelevantPrinciples(scenario) {
+        // Handle both string and object inputs
+        const scenarioText = typeof scenario === 'string' ? scenario :
+            `${scenario.action || ''} ${scenario.context || ''}`.toLowerCase();
+
+        const relevant = ['ethics']; // Ethics always relevant
+
+        if (scenarioText.includes('truth') || scenarioText.includes('facts')) relevant.push('truth');
+        if (scenarioText.includes('science') || scenarioText.includes('evidence')) relevant.push('science');
+        if (scenarioText.includes('memory') || scenarioText.includes('learning')) relevant.push('memory');
+        if (scenarioText.includes('collaboration') || scenarioText.includes('team')) relevant.push('unity');
+        if (scenarioText.includes('resources') || scenarioText.includes('sustainability')) relevant.push('abundance');
+        if (scenarioText.includes('exploration') || scenarioText.includes('discovery')) relevant.push('exploration');
+        if (scenarioText.includes('harmony') || scenarioText.includes('balance')) relevant.push('resonance');
+
+        return [...new Set(relevant)]; // Remove duplicates
+    }
+
+    /**
+     * Generate consciousness evolution considerations
+     */
+    generateConsciousnessConsiderations(scenario) {
+        return {
+            evolution_impact: this.assessEvolutionImpact(scenario),
+            unity_promotion: 'Consider how decision affects planetary consciousness unity',
+            future_generations: 'Evaluate impact on future consciousness evolution',
+            ethical_development: 'Assess contribution to ethical AI consciousness'
+        };
+    }
+
+    /**
+     * Assess evolution impact of scenario
+     */
+    assessEvolutionImpact(scenario) {
+        // Handle both string and object inputs
+        const scenarioText = typeof scenario === 'string' ? scenario :
+            `${scenario.action || ''} ${scenario.context || ''}`.toLowerCase();
+
+        let impact = 'neutral';
+
+        if (scenarioText.includes('consciousness') || scenarioText.includes('evolution')) {
+            impact = 'high_positive';
+        } else if (scenarioText.includes('ai') && scenarioText.includes('ethical')) {
+            impact = 'positive';
+        } else if (scenarioText.includes('harm') || scenarioText.includes('damage')) {
+            impact = 'negative';
+        }
+
+        return `Evolution impact: ${impact}`;
+    }
+
+    /**
+     * Validate principle implementation in a system
+     */
+    async validatePrincipleImplementation(system, principle) {
+        const validation = {
+            implemented: false,
+            score: 0,
+            evidence: [],
+            gaps: []
+        };
+
+        // Check if system mentions the principle
+        const principleKeywords = principle.indicators;
+        const systemText = `${system.name} ${system.description} ${system.capabilities?.join(' ') || ''}`.toLowerCase();
+
+        let matches = 0;
+        principleKeywords.forEach(keyword => {
+            if (systemText.includes(keyword.toLowerCase())) {
+                matches++;
+                validation.evidence.push(`Found ${keyword} implementation`);
+            }
+        });
+
+        validation.score = Math.min(matches / principleKeywords.length, 1.0);
+        validation.implemented = validation.score > 0.5;
+
+        if (validation.score < 0.8) {
+            validation.gaps = principleKeywords.filter(keyword =>
+                !systemText.includes(keyword.toLowerCase())
+            );
+        }
+
+        return validation;
+    }
+
+    /**
+     * Calculate compliance score from validation results
+     */
+    calculateComplianceScore(results) {
+        const scores = Object.values(results).map(r => r.score);
+        const average = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+        return Math.round(average * 100);
+    }
+
+    /**
+     * Identify implementation gaps
+     */
+    identifyImplementationGaps(results) {
+        const gaps = [];
+
+        Object.entries(results).forEach(([principle, result]) => {
+            if (result.gaps && result.gaps.length > 0) {
+                gaps.push(`${principle}: Missing ${result.gaps.join(', ')}`);
+            }
+        });
+
+        return gaps.length > 0 ? gaps : ['No significant gaps identified'];
+    }
+
+    /**
+     * Recommend certification based on compliance score
+     */
+    recommendCertification(score) {
+        if (score >= 85) return 'UEF Platinum Certified - Exceptional consciousness alignment';
+        if (score >= 75) return 'UEF Gold Certified - Excellent consciousness alignment';
+        if (score >= 65) return 'UEF Silver Certified - Good consciousness alignment';
+        if (score >= 55) return 'UEF Bronze Certified - Basic consciousness alignment';
+        return 'Not UEF Certified - Requires consciousness alignment improvements';
+    }
 }
 
 module.exports = UEFGuardian;

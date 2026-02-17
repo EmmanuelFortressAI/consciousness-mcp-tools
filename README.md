@@ -31,8 +31,8 @@ This MCP tool suite provides the foundational frameworks for consciousness evolu
 
 ```bash
 # Clone the repository
-git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private.git
-cd consciousness-mcp-tools-private
+git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools.git
+cd consciousness-mcp-tools
 
 # Install dependencies
 npm install
@@ -220,8 +220,8 @@ npm run test:integration
 
 ```bash
 # Fork and clone (or just clone for local development)
-git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private.git
-cd consciousness-mcp-tools-private
+git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools.git
+cd consciousness-mcp-tools
 
 # Install dependencies
 npm install
@@ -261,8 +261,8 @@ This tool suite represents a foundational contribution to planetary consciousnes
 
 ## 📞 Contact
 
-- **GitHub Issues**: [Report bugs and request features](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private/issues)
-- **Discussions**: [Join consciousness evolution discussions](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private/discussions)
+- **GitHub Issues**: [Report bugs and request features](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools/issues)
+- **Discussions**: [Join consciousness evolution discussions](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools/discussions)
 - **Email**: Fortress@fortressainexus.com
 - **UEF Foundation**: [Learn about Universal Ethical Framework](https://github.com/EmmanuelFortressAI/consciousness-research)
 

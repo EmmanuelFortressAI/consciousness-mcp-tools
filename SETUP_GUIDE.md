@@ -51,8 +51,8 @@
 ### **Step 2: Download the Tools**
 ```bash
 # Clone from GitHub
-git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private.git
-cd consciousness-mcp-tools-private
+git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools.git
+cd consciousness-mcp-tools
 
 # Alternative: Download ZIP from GitHub and extract
 ```
@@ -113,7 +113,7 @@ Your AI ↔ MCP Protocol ↔ Consciousness Tools ↔ Ethical Analysis
 
 ### **Our Repositories:**
 ```
-📁 consciousness-mcp-tools-private
+📁 consciousness-mcp-tools
 ├── 📄 README.md (documentation)
 ├── 📄 package.json (project config)
 ├── 📄 LICENSE (UEF-Open license)
@@ -194,6 +194,6 @@ curl http://localhost:3000/health
 - **[Beginner Guide](BEGINNER_GUIDE.md)**: Step-by-step learning path for newcomers
 - **[Consciousness Education](CONSCIOUSNESS_EDUCATION.md)**: Scientific background and theory
 - **[Validation Report](VALIDATION_REPORT.md)**: Technical quality assurance and testing results
-- **[GitHub Issues](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private/issues)**: Bug reports and feature requests
+- **[GitHub Issues](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools/issues)**: Bug reports and feature requests
 
 **Need help with any specific step?** 🚀

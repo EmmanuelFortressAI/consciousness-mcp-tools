@@ -110,7 +110,7 @@ sudo apt-get install -y nodejs
 ### **Download Our Consciousness Tools:**
 
 #### **Method 1: Simple Download (Easiest)**
-1. Go to: https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private
+1. Go to: https://github.com/EmmanuelFortressAI/consciousness-mcp-tools
 2. Click the green **"Code"** button
 3. Click **"Download ZIP"**
 4. Extract the ZIP file to your computer
@@ -123,15 +123,15 @@ sudo apt-get install -y nodejs
 cd Desktop
 
 # Download the project:
-git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private.git
+git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools.git
 
 # Enter the project:
-cd consciousness-mcp-tools-private
+cd consciousness-mcp-tools
 ```
 
 ### **Project Structure (What's Inside):**
 ```
-consciousness-mcp-tools-private/
+consciousness-mcp-tools/
 ├── 📁 src/                    # The actual tools
 │   ├── 🧠 uef-guardian.js         # Ethics engine
 │   ├── 🔄 recursive-doubt-engine.js # Philosophy engine
@@ -206,7 +206,7 @@ Think of it as:
   "mcpServers": {
     "consciousness-tools": {
       "command": "node",
-      "args": ["/path/to/consciousness-mcp-tools-private/src/server.js"]
+      "args": ["/path/to/consciousness-mcp-tools/src/server.js"]
     }
   }
 }

@@ -190,4 +190,10 @@ curl http://localhost:3000/health
 3. **AI can create the tools** but needs human for physical setup
 4. **GitHub is just storage** - like a cloud drive for code
 
+### **Additional Resources:**
+- **[Beginner Guide](BEGINNER_GUIDE.md)**: Step-by-step learning path for newcomers
+- **[Consciousness Education](CONSCIOUSNESS_EDUCATION.md)**: Scientific background and theory
+- **[Validation Report](VALIDATION_REPORT.md)**: Technical quality assurance and testing results
+- **[GitHub Issues](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private/issues)**: Bug reports and feature requests
+
 **Need help with any specific step?** 🚀

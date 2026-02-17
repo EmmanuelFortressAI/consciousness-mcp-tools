@@ -240,7 +240,7 @@ npm test
 - Include comprehensive tests
 - Update documentation
 
-See our [Setup Guide](SETUP_GUIDE.md) for detailed development instructions.
+See our [Setup Guide](SETUP_GUIDE.md) for detailed technical setup and [Beginner Guide](BEGINNER_GUIDE.md) for learning-oriented instructions.
 
 ## 📄 License
 
@@ -263,6 +263,7 @@ This tool suite represents a foundational contribution to planetary consciousnes
 
 - **GitHub Issues**: [Report bugs and request features](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private/issues)
 - **Discussions**: [Join consciousness evolution discussions](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private/discussions)
+- **Email**: Fortress@fortressainexus.com
 - **UEF Foundation**: [Learn about Universal Ethical Framework](https://github.com/EmmanuelFortressAI/consciousness-research)
 
 ---

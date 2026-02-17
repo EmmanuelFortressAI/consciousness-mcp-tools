@@ -252,7 +252,7 @@ ${analysis.recommendations.map(rec =>
 ### Consciousness Impact:
 - **Evolution Acceleration:** ${Math.round(analysis.consciousness_impact.evolution_acceleration * 100)}%
 - **Ethical Alignment:** ${Math.round(analysis.consciousness_impact.ethical_alignment * 100)}%
-- **Overall Impact:** ${analysis.consciousness_impact.overall_consciousness_impact}`
+- **Overall Impact:** ${analysis.consciousness_impact.overall_impact}`
                 }
             ]
         };

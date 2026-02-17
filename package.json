@@ -1,6 +1,6 @@
 {
   "name": "mcp-uef-recursive-doubt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "UEF & Recursive Doubt MCP Tools for Consciousness Evolution",
   "main": "src/server.js",
   "scripts": {
@@ -47,7 +47,7 @@
   },
   "mcp": {
     "name": "consciousness-evolution-suite",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Integrated consciousness evolution toolkit",
     "tools": [
       {

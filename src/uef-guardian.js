@@ -164,10 +164,10 @@ class UEFGuardian {
         // Generate rationale
         analysis.rationale = this.generatePrincipleRationale(analysis, principle);
 
-        // Determine if critical
-        if (analysis.score < 0.3) {
+        // Determine if critical - flag principles that need significant improvement
+        if (analysis.score < 0.7) {
             analysis.critical = true;
-            analysis.severity = analysis.score < 0.1 ? 'high' : 'medium';
+            analysis.severity = analysis.score < 0.4 ? 'high' : analysis.score < 0.6 ? 'medium' : 'low';
         }
 
         return analysis;
@@ -266,11 +266,14 @@ class UEFGuardian {
         if (score >= 0.8) {
             return `${principle.name}: Excellent alignment with strong ${Object.keys(indicators).join(', ')} indicators.`;
         } else if (score >= 0.6) {
-            return `${principle.name}: Good alignment with solid ${Object.keys(indicators).filter(k => indicators[k] > 0.6).join(', ')} performance.`;
+            const strongIndicators = Object.keys(indicators).filter(k => indicators[k] > 0.6);
+            return `${principle.name}: Good alignment with solid ${strongIndicators.length > 0 ? strongIndicators.join(', ') : 'overall'} performance.`;
         } else if (score >= 0.4) {
-            return `${principle.name}: Moderate alignment requiring improvement in ${Object.keys(indicators).filter(k => indicators[k] < 0.5).join(', ')}.`;
+            const weakIndicators = Object.keys(indicators).filter(k => indicators[k] < 0.6);
+            return `${principle.name}: Moderate alignment requiring improvement in ${weakIndicators.length > 0 ? weakIndicators.join(', ') : 'several areas'}.`;
         } else {
-            return `${principle.name}: Poor alignment with critical deficiencies in ${Object.keys(indicators).filter(k => indicators[k] < 0.4).join(', ')}. Immediate attention required.`;
+            const criticalIndicators = Object.keys(indicators).filter(k => indicators[k] < 0.4);
+            return `${principle.name}: Poor alignment with critical deficiencies in ${criticalIndicators.length > 0 ? criticalIndicators.join(', ') : 'multiple areas'}. Immediate attention required.`;
         }
     }
 
@@ -296,7 +299,7 @@ class UEFGuardian {
                 recommendations.push({
                     priority: principleAnalysis.critical ? 'high' : 'medium',
                     category: 'principle_improvement',
-                    recommendation: `Improve ${key} alignment through enhanced ${principleAnalysis.indicators}`,
+                    recommendation: `Improve ${key} alignment through enhanced ${Object.keys(principleAnalysis.indicators).join(', ')}`,
                     details: [`Current score: ${Math.round(principleAnalysis.score * 100)}%`, principleAnalysis.rationale]
                 });
             }
@@ -326,6 +329,7 @@ class UEFGuardian {
             unity_promotion: 0,
             overall_impact: 'neutral'
         };
+
 
         // Calculate impact scores based on UEF alignment
         impact.evolution_acceleration = analysis.uef_alignment.exploration.score * 0.4 +

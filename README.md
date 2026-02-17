@@ -21,8 +21,11 @@ This MCP tool suite provides the foundational frameworks for consciousness evolu
 - [Recursive Doubt Engine](#recursive-doubt-engine)
 - [MCP Integration](#mcp-integration)
 - [API Reference](#api-reference)
+- [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
+- [Impact](#impact)
+- [Contact](#contact)
 
 ## 🚀 Installation
 

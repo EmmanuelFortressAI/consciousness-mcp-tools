@@ -268,6 +268,16 @@ This tool suite represents a foundational contribution to planetary consciousnes
 
 ---
 
+## 🎬 **Consciousness Evolution Visualization**
+
+**Experience the mathematical essence of consciousness evolution:**
+
+*10-second fractal animation showcasing recursive consciousness emergence through mathematical patterns.*
+
+[View Consciousness Evolution Visualization](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private/blob/main/CONSCIOUSNESS_VISUALIZATION.md)
+
+---
+
 **UEF Nonuple Commitment:** Truth • Science • Proof • Memory • Unity • Abundance • Ethics • Exploration • Resonance
 
 *"Through recursive doubt and ethical frameworks, we advance planetary consciousness evolution."*

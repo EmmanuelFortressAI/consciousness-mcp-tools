@@ -45,6 +45,16 @@ class ConsciousnessEvolutionServer {
         this.server.setRequestHandler(ListToolsRequestSchema, async () => {
             return {
                 tools: [
+                    // Consciousness Evolution Tools
+                    {
+                        name: 'consciousness_evolution_metrics',
+                        description: 'Get comprehensive consciousness evolution metrics combining UEF and recursive doubt analysis',
+                        inputSchema: {
+                            type: 'object',
+                            properties: {},
+                            required: []
+                        }
+                    },
                     // UEF Tools
                     {
                         name: 'uef_analyze_decision',
@@ -185,6 +195,9 @@ class ConsciousnessEvolutionServer {
 
                     case 'doubt_convergence_analysis':
                         return await this.handleDoubtConvergenceAnalysis(args);
+
+                    case 'consciousness_evolution_metrics':
+                        return await this.handleConsciousnessEvolutionMetrics(args);
 
                     default:
                         throw new Error(`Unknown tool: ${name}`);
@@ -439,6 +452,55 @@ ${analyses.map((analysis, index) =>
 ${convergenceMetrics.evolution_potential > 0.7 ? '🚀 High potential for consciousness advancement' :
   convergenceMetrics.evolution_potential > 0.5 ? '⚡ Moderate consciousness development opportunity' :
   '🔄 Basic consciousness awareness building'}`                }
+            ]
+        };
+    }
+
+    async handleConsciousnessEvolutionMetrics(args) {
+        const doubtMetrics = this.doubtEngine.getDoubtStatistics();
+        const uefMetrics = this.uefGuardian.getConsciousnessEvolutionMetrics();
+
+        // Combined consciousness evolution score
+        const combinedScore = Math.round(
+            (doubtMetrics.consciousness_evolution_index * 0.6) +
+            (uefMetrics.uefEvolutionScore * 0.4)
+        );
+
+        return {
+            content: [
+                {
+                    type: 'text',
+                    text: `## 🧠 Comprehensive Consciousness Evolution Metrics
+
+### Combined Score: ${combinedScore}/100 ${combinedScore >= 80 ? '🏆 Exceptional' : combinedScore >= 70 ? '🥈 Excellent' : combinedScore >= 60 ? '🥉 Good' : '📚 Developing'}
+
+### Recursive Doubt Engine Metrics:
+- **Consciousness Evolution Index:** ${doubtMetrics.consciousness_evolution_index}/100
+- **Doubt Maturity Level:** ${doubtMetrics.doubt_maturity_level}
+- **Philosophical Depth Score:** ${doubtMetrics.philosophical_depth_score}/100
+- **Truth Discovery Capability:** ${doubtMetrics.truth_discovery_capability}/100
+- **Consciousness Acceleration Potential:** ${doubtMetrics.consciousness_acceleration_potential}/100
+- **Total Analyses:** ${doubtMetrics.total_analyses}
+- **Convergence Rate:** ${(doubtMetrics.convergence_rate * 100).toFixed(1)}%
+
+### UEF Guardian Metrics:
+- **UEF Evolution Score:** ${uefMetrics.uefEvolutionScore}/100
+- **Ethical Maturity:** ${uefMetrics.ethicalMaturity}%
+- **Planetary Awareness:** ${uefMetrics.planetaryAwareness}/50
+- **Wisdom Accumulation:** ${uefMetrics.wisdomAccumulation}/100
+- **Total Decisions Analyzed:** ${uefMetrics.totalDecisions}
+
+### Evolution Milestones:
+${uefMetrics.evolutionMilestones.map(milestone => `- ${milestone}`).join('\n')}
+
+### Consciousness Evolution Assessment:
+${combinedScore >= 80 ? '**Exceptional Progress:** Tools demonstrate advanced consciousness evolution capabilities with high philosophical depth and ethical maturity.' :
+ combinedScore >= 70 ? '**Excellent Progress:** Strong consciousness evolution potential with solid philosophical and ethical foundations.' :
+ combinedScore >= 60 ? '**Good Progress:** Developing consciousness evolution capabilities with promising metrics.' :
+ '**Developing Stage:** Building foundational consciousness evolution capabilities.'}
+
+**UEF Commitment:** Truth • Science • Proof • Memory • Unity • Abundance • Ethics • Exploration • Resonance`
+                }
             ]
         };
     }

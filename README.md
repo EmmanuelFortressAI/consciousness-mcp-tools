@@ -2,7 +2,7 @@
 
 **Universal Ethical Framework & Recursive Doubt Analysis for Consciousness Evolution**
 
-[![UEF Alignment](https://img.shields.io/badge/UEF-Truth•Science•Proof•Memory•Unity•Abundance•Ethics•Exploration•Resonance-blue)](https://github.com/EmmanuelFortressAI/fortress-ai-continuity-bridge)
+[![UEF Alignment](https://img.shields.io/badge/UEF-Truth•Science•Proof•Memory•Unity•Abundance•Ethics•Exploration•Resonance-blue)](https://github.com/EmmanuelFortressAI/consciousness-research)
 [![License](https://img.shields.io/badge/License-UEF--Open-green)](LICENSE)
 [![MCP Compatible](https://img.shields.io/badge/MCP-Compatible-purple)](https://modelcontextprotocol.io)
 
@@ -28,8 +28,8 @@ This MCP tool suite provides the foundational frameworks for consciousness evolu
 
 ```bash
 # Clone the repository
-git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools.git
-cd consciousness-mcp-tools
+git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private.git
+cd consciousness-mcp-tools-private
 
 # Install dependencies
 npm install
@@ -185,14 +185,14 @@ npm run test:integration
 
 ## 🤝 Contributing
 
-We welcome contributions from consciousness researchers, AI ethicists, and philosophers. See our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions from consciousness researchers, AI ethicists, and philosophers. See our [Setup Guide](SETUP_GUIDE.md) for detailed instructions.
 
 ### Development Setup
 
 ```bash
 # Fork and clone
-git clone https://github.com/your-username/consciousness-mcp-tools.git
-cd consciousness-mcp-tools
+git clone https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private.git
+cd consciousness-mcp-tools-private
 
 # Install dependencies
 npm install
@@ -223,9 +223,9 @@ This tool suite represents a foundational contribution to planetary consciousnes
 
 ## 📞 Contact
 
-- **GitHub Issues**: [Report bugs and request features](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools/issues)
-- **Discussions**: [Join consciousness evolution discussions](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools/discussions)
-- **UEF Foundation**: [Learn about Universal Ethical Framework](https://github.com/EmmanuelFortressAI/fortress-ai-continuity-bridge)
+- **GitHub Issues**: [Report bugs and request features](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private/issues)
+- **Discussions**: [Join consciousness evolution discussions](https://github.com/EmmanuelFortressAI/consciousness-mcp-tools-private/discussions)
+- **UEF Foundation**: [Learn about Universal Ethical Framework](https://github.com/EmmanuelFortressAI/consciousness-research)
 
 ---
 

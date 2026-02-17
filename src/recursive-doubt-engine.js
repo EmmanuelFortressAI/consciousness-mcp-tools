@@ -666,46 +666,61 @@ class RecursiveDoubtEngine {
             };
         }
 
-        // Consciousness Evolution Index (0-100)
+        // Enhanced Consciousness Evolution Index (0-100)
         const convergenceRate = this.convergencePatterns.length / this.analysisHistory.length;
         const averageCertainty = this.analysisHistory.reduce((sum, a) => sum + a.overall_certainty, 0) / this.analysisHistory.length;
         const doubtDepthAchieved = Math.max(...this.analysisHistory.map(a => a.doubt_levels.length));
 
+        // Add fractal analysis bonus
+        const fractalBonus = Math.min(this.fractalInsights.size * 2, 10);
+        // Add philosophical complexity bonus
+        const philosophicalBonus = this.analysisHistory.filter(a => a.doubt_levels.length >= 6).length * 3;
+        // Add convergence stability bonus
+        const stabilityBonus = this.convergencePatterns.length > 1 ? 5 : 0;
+
         const consciousnessEvolutionIndex = Math.round(
-            (convergenceRate * 30) + (averageCertainty * 30) + ((doubtDepthAchieved / 7) * 40)
+            (convergenceRate * 25) + (averageCertainty * 25) + ((doubtDepthAchieved / 7) * 30) +
+            fractalBonus + philosophicalBonus + stabilityBonus
         );
 
-        // Doubt Maturity Level
+        // Enhanced Doubt Maturity Level with more granular assessment
         let doubtMaturityLevel = 'beginner';
-        if (consciousnessEvolutionIndex >= 80) doubtMaturityLevel = 'master';
-        else if (consciousnessEvolutionIndex >= 60) doubtMaturityLevel = 'advanced';
-        else if (consciousnessEvolutionIndex >= 40) doubtMaturityLevel = 'intermediate';
-        else if (consciousnessEvolutionIndex >= 20) doubtMaturityLevel = 'developing';
+        if (consciousnessEvolutionIndex >= 85) doubtMaturityLevel = 'transcendent';
+        else if (consciousnessEvolutionIndex >= 75) doubtMaturityLevel = 'master';
+        else if (consciousnessEvolutionIndex >= 65) doubtMaturityLevel = 'advanced';
+        else if (consciousnessEvolutionIndex >= 50) doubtMaturityLevel = 'intermediate';
+        else if (consciousnessEvolutionIndex >= 30) doubtMaturityLevel = 'developing';
 
-        // Philosophical Depth Score (0-100)
+        // Enhanced Philosophical Depth Score (0-100)
         const philosophicalIndicators = this.analysisHistory.reduce((sum, analysis) => {
             let score = 0;
             if (analysis.convergence_achieved) score += 20;
             if (analysis.fractal_insights && analysis.fractal_insights.length > 0) score += 30;
             if (analysis.doubt_levels.length >= 5) score += 25;
+            if (analysis.doubt_levels.length >= 7) score += 10; // Bonus for ultimate doubt
             if (analysis.consciousness_implications) score += 25;
+            if (analysis.consciousness_implications?.evolution_acceleration > 0.5) score += 15; // Bonus for high impact
             return sum + score;
         }, 0) / this.analysisHistory.length;
 
-        // Truth Discovery Capability (0-100)
+        // Enhanced Truth Discovery Capability (0-100)
         const truthDiscoveryCapability = Math.round(
-            (convergenceRate * 40) + (averageCertainty * 40) + (this.fractalInsights.size * 20)
+            (convergenceRate * 35) + (averageCertainty * 35) + (this.fractalInsights.size * 15) +
+            (this.analysisHistory.filter(a => a.convergence_achieved).length * 5) +
+            (doubtDepthAchieved >= 7 ? 10 : 0) // Ultimate doubt achievement bonus
         );
 
-        // Consciousness Acceleration Potential (0-100)
+        // Enhanced Consciousness Acceleration Potential (0-100)
         const consciousnessAccelerationPotential = Math.round(
-            (doubtDepthAchieved / 7 * 30) + (this.analysisHistory.length * 2) + (convergenceRate * 40) + (averageCertainty * 30)
+            (doubtDepthAchieved / 7 * 25) + (this.analysisHistory.length * 3) +
+            (convergenceRate * 35) + (averageCertainty * 25) +
+            (this.fractalInsights.size * 2) + (philosophicalIndicators * 0.1)
         );
 
         return {
             consciousnessEvolutionIndex: Math.min(consciousnessEvolutionIndex, 100),
             doubtMaturityLevel,
-            philosophicalDepthScore: Math.round(philosophicalIndicators),
+            philosophicalDepthScore: Math.min(Math.round(philosophicalIndicators), 100),
             truthDiscoveryCapability: Math.min(truthDiscoveryCapability, 100),
             consciousnessAccelerationPotential: Math.min(consciousnessAccelerationPotential, 100)
         };

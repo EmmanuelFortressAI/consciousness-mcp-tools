@@ -72,6 +72,13 @@ class UEFGuardian {
 
         this.decisionHistory = [];
         this.guidancePatterns = new Map();
+        this.consciousnessEvolutionTracker = {
+            totalDecisions: 0,
+            ethicalMaturityScore: 0,
+            planetaryAwarenessIndex: 0,
+            wisdomAccumulation: 0,
+            evolutionMilestones: []
+        };
     }
 
     /**
@@ -116,6 +123,9 @@ class UEFGuardian {
 
         // Assess consciousness impact
         analysis.consciousness_impact = this.assessConsciousnessImpact(analysis);
+
+        // Update consciousness evolution tracking
+        this.updateConsciousnessEvolutionTracking(analysis);
 
         // Store in history
         this.decisionHistory.push(analysis);
@@ -720,6 +730,65 @@ class UEFGuardian {
         if (score >= 65) return 'UEF Silver Certified - Good consciousness alignment';
         if (score >= 55) return 'UEF Bronze Certified - Basic consciousness alignment';
         return 'Not UEF Certified - Requires consciousness alignment improvements';
+    }
+
+    /**
+     * Update consciousness evolution tracking based on decision analysis
+     */
+    updateConsciousnessEvolutionTracking(analysis) {
+        this.consciousnessEvolutionTracker.totalDecisions++;
+
+        // Ethical maturity based on UEF compliance
+        const ethicalGrowth = analysis.overall_score / 100;
+        this.consciousnessEvolutionTracker.ethicalMaturityScore =
+            (this.consciousnessEvolutionTracker.ethicalMaturityScore + ethicalGrowth) / 2;
+
+        // Planetary awareness based on stakeholder consideration
+        const stakeholderCount = analysis.uef_alignment.unity?.score || 0.5;
+        this.consciousnessEvolutionTracker.planetaryAwarenessIndex +=
+            (stakeholderCount > 0.7 ? 2 : stakeholderCount > 0.5 ? 1 : 0);
+
+        // Wisdom accumulation based on critical issue resolution
+        if (analysis.critical_issues.length === 0 && analysis.overall_score > 70) {
+            this.consciousnessEvolutionTracker.wisdomAccumulation += 5;
+        } else if (analysis.recommendations.length > 0) {
+            this.consciousnessEvolutionTracker.wisdomAccumulation += 2;
+        }
+
+        // Evolution milestones
+        if (this.consciousnessEvolutionTracker.totalDecisions === 1) {
+            this.consciousnessEvolutionTracker.evolutionMilestones.push('First ethical decision analyzed');
+        }
+        if (analysis.overall_score >= 90) {
+            this.consciousnessEvolutionTracker.evolutionMilestones.push('Exceptional ethical alignment achieved');
+        }
+        if (this.consciousnessEvolutionTracker.ethicalMaturityScore > 0.8) {
+            this.consciousnessEvolutionTracker.evolutionMilestones.push('High ethical maturity reached');
+        }
+    }
+
+    /**
+     * Get consciousness evolution metrics from UEF perspective
+     */
+    getConsciousnessEvolutionMetrics() {
+        const tracker = this.consciousnessEvolutionTracker;
+
+        // Calculate overall consciousness evolution score from UEF perspective
+        const uefEvolutionScore = Math.round(
+            (tracker.ethicalMaturityScore * 40) +
+            Math.min(tracker.planetaryAwarenessIndex * 2, 30) +
+            Math.min(tracker.wisdomAccumulation * 0.5, 20) +
+            Math.min(tracker.totalDecisions * 2, 10)
+        );
+
+        return {
+            uefEvolutionScore: Math.min(uefEvolutionScore, 100),
+            ethicalMaturity: Math.round(tracker.ethicalMaturityScore * 100),
+            planetaryAwareness: Math.min(tracker.planetaryAwarenessIndex, 50),
+            wisdomAccumulation: Math.min(tracker.wisdomAccumulation, 100),
+            totalDecisions: tracker.totalDecisions,
+            evolutionMilestones: tracker.evolutionMilestones.slice(-5) // Last 5 milestones
+        };
     }
 }
 
